@@ -7,6 +7,13 @@ Official PyTorch implementation of **DistiLLM-2**, as presented in our paper:
 by [Jongwoo Ko](https://sites.google.com/view/jongwooko)<sup>1,2</sup>, Tianyi Chen<sup>2</sup>, [Sungnyun Kim](https://sungnyunkim.notion.site/Sungnyun-Kim-4770a0182c47469ebdcd357cde97bd32)<sup>1</sup>, Tianyu Ding<sup>2</sup>, Luming Liang<sup>2</sup>, Ilya Zharkov<sup>2</sup>, and Se-Young Yun<sup>1</sup>  
 <sup>1</sup>KAIST AI &nbsp;&nbsp; <sup>2</sup>Microsoft
 
+---
+
+## 🚀 Updates
+- [x] (25.06.10) The official code implementation is finally out.
+- [x] (25.06.09) DistiLLM-2 has been selected for an ***oral presentation at ICML (_top 1%_)***.
+- [x] (25.03.11) DistiLLM-2 paper is out! The preliminary code will be available in this repo, and final code will be available in [here](https://github.com/jongwooko/distillm-2).
+
 --- 
 
 ## 🔧 Environment Setup
