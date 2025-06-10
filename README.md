@@ -46,7 +46,8 @@ python -m pip install flashinfer -i https://flashinfer.ai/whl/cu121/torch2.4
 
 ## 🚀 Generation
 
-0. (Optional) Perform supervised fine-tuning before running DistiLLM-2. This step can be skipped if you are using an instruction-tuned model as the student. However, if you do skip it, we recommend reducing the number of training iterations for DistiLLM-2 to avoid overfitting.
+0. (Optional) Perform supervised fine-tuning before running DistiLLM-2. This step can be skipped if you are using an instruction-tuned model as the student. We recommend performing this step. However, if you choose to skip it, we suggest reducing the number of training iterations for DistiLLM-2 as described in Appendix D.2.
+
 ```bash
 accelerate launch --config_file accelerate_configs/deepspeed_zero3.yaml --num_processes=4 src/run_sft.py training_configs/qwen2.5-1.5b-sft.yaml
 ```
@@ -93,6 +94,8 @@ accelerate launch --config_file accelerate_configs/deepspeed_zero3.yaml --num_pr
 ## 📊 Evaluation
 
 For our evaluation benchmark, we use AlpacaEval, Evol-Instruct, and UltraFeedback. We generate responses for pairwise comparison with the LLM-as-a-Judge framework. For AlpacaEval, we use the official response from `text-davinci-003`. For Evol-Instruct and UltraFeedback, we use responses from `gpt-3.5-turbo`. As judge models, we use `GPT-4o` for AlpacaEval and Evol-Instruct, and `GPT-4o-mini` for UltraFeedback.
+
+**Note** The MATH dataset (Hendrycks et al., 2021) is currently blocked. Although we use the `hendrycks/competition_math` dataset on Hugging Face for prompts, it is not available for use at this time.
 
 1. Generate outputs for evaluation (e.g., Evol-Instruct):
 
