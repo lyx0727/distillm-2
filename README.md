@@ -125,11 +125,13 @@ If you find this repo useful for your research, please consider citing us:
   booktitle={Forty-first International Conference on Machine Learning}
 }
 
-@article{ko2025distillm,
-  title={Distillm-2: A contrastive approach boosts the distillation of llms},
-  author={Ko, Jongwoo and Chen, Tianyi and Kim, Sungnyun and Ding, Tianyu and Liang, Luming and Zharkov, Ilya and Yun, Se-Young},
-  journal={arXiv preprint arXiv:2503.07067},
-  year={2025}
+@inproceedings{
+ko2025distillm,
+title={Disti{LLM}-2: A Contrastive Approach Boosts the Distillation of {LLM}s},
+author={Jongwoo Ko and Tianyi Chen and Sungnyun Kim and Tianyu Ding and Luming Liang and Ilya Zharkov and Se-Young Yun},
+booktitle={Forty-second International Conference on Machine Learning},
+year={2025},
+url={https://openreview.net/forum?id=rc65N9xIrY}
 }
 ```
 
