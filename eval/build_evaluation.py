@@ -65,9 +65,9 @@ else:
 
 os.makedirs('./results/inputs', exist_ok=True)
 if args.output_file is None:
-    args.output_file = f"{args.data_path1}_{args.data_path1}"
+    args.output_file = f"{args.data_path1}_{args.data_path2}"
 
 with open(f"./results/inputs/{args.output_file}.jsonl", "w") as f:
     for job in jobs:
-        json_string = json.dumps(job)
+        json_string = json.dumps(job, ensure_ascii=False)
         f.write(json_string + "\n")
