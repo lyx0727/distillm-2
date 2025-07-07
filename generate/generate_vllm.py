@@ -60,6 +60,10 @@ def main():
         data_dir = "eval/alpacaeval/alpaca_eval.json"
         train_dataset = load_dataset('json', data_files=data_dir, split='train')
         prompts = train_dataset['instruction']
+    elif args.data_dir == "ultrafeedback":
+        data_dir = "eval/ultrafeedback/ultrafeedback_eval.json"
+        train_dataset = load_dataset('json', data_files=data_dir, split='train')
+        prompts = train_dataset['prompt']
     elif args.data_dir == "ultrachat":
         prompts = [
             # example[0]['content'] for example in load_dataset(f'UCLA-AGI/SPIN_iter{args.iter}', split='train')['generated']
