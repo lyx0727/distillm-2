@@ -9,8 +9,8 @@ else
   --requests_filepath results/inputs/${1}-${2}_$seed.jsonl \
   --save_filepath $output1 \
   --request_url $OPENAI_BASE_URL/chat/completions \
-  --max_requests_per_minute 150 \
-  --max_tokens_per_minute 62500 \
+  --max_requests_per_minute 500 \
+  --max_tokens_per_minute 625000 \
   --max_attempts 5 \
   --logging_level 20 \
   --api_key $OPENAI_API_KEY
@@ -23,7 +23,7 @@ else
     --requests_filepath results/inputs/${2}-${1}_$seed.jsonl \
     --save_filepath $output2 \
     --request_url $OPENAI_BASE_URL/chat/completions \
-    --max_requests_per_minute 1500 \
+    --max_requests_per_minute 500 \
     --max_tokens_per_minute 625000 \
     --max_attempts 5 \
     --logging_level 20 \

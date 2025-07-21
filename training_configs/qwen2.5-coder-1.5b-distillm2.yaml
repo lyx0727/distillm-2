@@ -1,6 +1,6 @@
 # Model arguments
-model_name_or_path: outputs/qwen2.5-1.5b-sft
-ref_model_name_or_path: ckpts/Qwen2.5-7B-Instruct
+model_name_or_path: ckpts/qwen2.5-coder-1.5b-sft
+ref_model_name_or_path: ckpts/Qwen2.5-Coder-7B-Instruct
 torch_dtype: null
 attn_implementation: flash_attention_2
 
@@ -20,7 +20,7 @@ lora_target_modules:
 
 # Data training arguments
 dataset_mixer:
-  ${YOUR_DATA_PATH}: 1.0
+  /AI4M/users/mjzhang/workspace/data/code-r1-12k/distillm2: 1.0
 dataset_splits:
 - train
 - test
@@ -28,23 +28,25 @@ preprocessing_num_workers: 12
 
 # DistiLLMTrainer arugments
 bf16: true
+beta: 0.2
 do_eval: true
+evaluation_strategy: steps
 eval_steps: 10000000
-gradient_accumulation_steps: 8
+gradient_accumulation_steps: 16
 gradient_checkpointing: true
 gradient_checkpointing_kwargs:
   use_reentrant: False
-hub_model_id: qwen
+hub_model_id: dpo-exps
 learning_rate: 5.0e-5
 log_level: info
-logging_steps: 100
+logging_steps: 5
 lr_scheduler_type: cosine
-max_length: 1024
-max_prompt_length: 512
-num_train_epochs: 1
+max_length: 4096
+max_prompt_length: 2048
+num_train_epochs: 2
 optim: adamw_torch
-output_dir: outputs/qwen2.5-1.5b-distillm2
-run_name: qwen2.5-1.5b-distillm2
+output_dir: outputs/qwen2.5-coder-1.5b-distillm2
+run_name: qwen2.5-coder-sft-distillm2
 per_device_train_batch_size: 1
 per_device_eval_batch_size: 2
 push_to_hub: false

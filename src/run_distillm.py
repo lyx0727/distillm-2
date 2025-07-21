@@ -43,7 +43,8 @@ from distillm_trainer import DistiLLMTrainer
 
 logger = logging.getLogger(__name__)
 
-
+import warnings
+warnings.filterwarnings("ignore")
 def main():
     parser = H4ArgumentParser((ModelArguments, DataArguments, DPOConfig))
     model_args, data_args, training_args = parser.parse()

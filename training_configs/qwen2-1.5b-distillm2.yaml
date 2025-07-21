@@ -1,6 +1,6 @@
 # Model arguments
-model_name_or_path: outputs/qwen2.5-1.5b-sft
-ref_model_name_or_path: ckpts/Qwen2.5-7B-Instruct
+model_name_or_path: ckpts/Qwen2-1.5B-UltraChat
+ref_model_name_or_path: ckpts/Qwen2-7B-Instruct
 torch_dtype: null
 attn_implementation: flash_attention_2
 
@@ -20,7 +20,7 @@ lora_target_modules:
 
 # Data training arguments
 dataset_mixer:
-  ${YOUR_DATA_PATH}: 1.0
+  /AI4M/users/mjzhang/workspace/data/Ultrachat_200k/SPIN_iter1/train: 1.0
 dataset_splits:
 - train
 - test
@@ -43,8 +43,8 @@ max_length: 1024
 max_prompt_length: 512
 num_train_epochs: 1
 optim: adamw_torch
-output_dir: outputs/qwen2.5-1.5b-distillm2
-run_name: qwen2.5-1.5b-distillm2
+output_dir: outputs/qwen2-1.5b-distillm2
+run_name: qwen2-1.5b-distillm2
 per_device_train_batch_size: 1
 per_device_eval_batch_size: 2
 push_to_hub: false

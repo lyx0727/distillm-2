@@ -89,12 +89,12 @@ def main():
     )
     column_names = list(raw_datasets["train"].features)
 
-    chosen = load_dataset("json", data_files='datasets/vlm/output_100.json', split='train')
-    rejected = load_dataset("json", data_files='datasets/vlm/iter1/output_100.json', split='train')
+    # chosen = load_dataset("json", data_files='datasets/vlm/output_100.json', split='train')
+    # rejected = load_dataset("json", data_files='datasets/vlm/iter1/output_100.json', split='train')
 
-    raw_datasets["train"] = raw_datasets["train"].remove_columns(["chosen", "rejected"])
-    raw_datasets["train"] = raw_datasets["train"].add_column("chosen", chosen["generated_text"][:len(raw_datasets["train"])])
-    raw_datasets["train"] = raw_datasets["train"].add_column("rejected", rejected["generated_text"][:len(raw_datasets["train"])])
+    # raw_datasets["train"] = raw_datasets["train"].remove_columns(["chosen", "rejected"])
+    # raw_datasets["train"] = raw_datasets["train"].add_column("chosen", chosen["generated_text"][:len(raw_datasets["train"])])
+    # raw_datasets["train"] = raw_datasets["train"].add_column("rejected", rejected["generated_text"][:len(raw_datasets["train"])])
 
     #####################################
     # Load tokenizer and process datasets
@@ -104,7 +104,7 @@ def main():
 
     def format(example):
         # Prepare the input for the chat template
-        prompt = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": example["question"]}]}]
+        prompt = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": example["prompt"]}]}]
         chosen = [{"role": "assistant", "content": [{"type": "text", "text": example["chosen"]}]}]
         rejected = [{"role": "assistant", "content": [{"type": "text", "text": example["rejected"]}]}]
         # Apply the chat template

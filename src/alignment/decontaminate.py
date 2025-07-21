@@ -38,7 +38,7 @@ def extract_docstring(prompt: str) -> str:
 
 
 def human_eval_docstrings() -> List[str]:
-    ds = load_dataset("openai_humaneval", split="test")
+    ds = load_dataset("/AI4M/users/mjzhang/workspace/data/openai_humaneval", split="test")
     docstrings = [extract_docstring(v["prompt"]) for v in ds]
     return docstrings
 

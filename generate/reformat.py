@@ -4,8 +4,10 @@ import datasets
 from datasets import load_dataset, concatenate_datasets, DatasetDict
 from tqdm import tqdm
 import argparse
-
-
+def clean(output: str):
+    if output.startswith('<|assistant|>\n'):
+        output = output[len('<|assistant|>\n'):]
+    return output
 def main(args):
     teacher_data = load_dataset('json', data_files=args.teacher_file, split='train')
     student_data = load_dataset('json', data_files=args.student_file, split='train')
@@ -18,17 +20,21 @@ def main(args):
     for p in teacher_data['prompt']:
         try:
             chosen, rejected = eval(dict_teacher[p]), eval(dict_student[p])
+            # chosen_score = chosen['rougeL']
             chosen = [
                 {"content": p, "role": "user"},
-                {"content": chosen['generated_text'], "role": "assistant"}
+                {"content": clean(chosen['generated_text']), "role": "assistant"}
             ]
+            # rejected_score = rejected['rougeL']
             rejected = [
                 {"content": p, "role": "user"},
-                {"content": rejected['generated_text'], "role": "assistant"}
+                {"content": clean(rejected['generated_text']), "role": "assistant"}
             ]
+            # samples.append({"prompt": p, "chosen": chosen, "rejected": rejected, "chosen_score": chosen_score, "rejected_score": rejected_score})
             samples.append({"prompt": p, "chosen": chosen, "rejected": rejected})
 
-        except:
+        except Exception as e:
+            breakpoint()
             continue
 
     if not os.path.exists(args.output_dir):

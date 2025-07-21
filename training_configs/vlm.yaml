@@ -1,6 +1,6 @@
 # Model arguments
-model_name_or_path: bczhou/tiny-llava-v1-hf
-ref_model_name_or_path: llava-hf/llava-1.5-7b-hf
+model_name_or_path: /AI4M/users/mjzhang/workspace/distillm-2/ckpts/tiny-llava-v1-hf
+ref_model_name_or_path: /AI4M/users/mjzhang/workspace/distillm-2/ckpts/llava-1.5-7b-hf
 torch_dtype: bfloat16
 attn_implementation: flash_attention_2
 
@@ -24,7 +24,7 @@ lora_target_modules:
 - linear_2
 
 dataset_mixer:
-  ${YOUR_DATASET}: 1.0
+  /AI4M/users/mjzhang/workspace/data/textvqa/distillm2: 1.0
 dataset_splits:
 - train
 - test
@@ -34,13 +34,13 @@ preprocessing_num_workers: 1
 bf16: true
 do_eval: true
 eval_strategy: epoch
-gradient_accumulation_steps: 4
+gradient_accumulation_steps: 2
 gradient_checkpointing: true
 gradient_checkpointing_kwargs:
   use_reentrant: False
 learning_rate: 2.0e-05
 log_level: info
-logging_steps: 100 
+logging_steps: 100
 logging_strategy: steps
 lr_scheduler_type: cosine
 # max_seq_length: 1024
